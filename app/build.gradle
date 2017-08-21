@@ -1,0 +1,30 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+
+    defaultConfig {
+        applicationId "com.braingalore.gcm_client"
+        minSdkVersion 16
+        targetSdkVersion 26
+    }
+
+    buildTypes {
+        release {
+            buildConfigField "boolean", "REPORT_DEBUG_LOGS", "true"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "REPORT_DEBUG_LOGS", "true"
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:26.0.1'
+    compile files('libs/gcm.jar')
+}
